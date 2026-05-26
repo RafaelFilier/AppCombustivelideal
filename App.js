@@ -5,17 +5,14 @@ import AppButton from './src/components/AppButton';
 import ResultCard from './src/components/ResultCard';
 
 export default function App() {
-  // Inicializando como string vazia para melhor controle dos inputs
   const [etanol, setEtanol] = useState('');
   const [gasolina, setGasolina] = useState('');
   const [resultado, setResultado] = useState(null);
   
   function VERIFICAR() {
-    // Converte os textos para números flutuantes
     const precoEtanol = parseFloat(etanol);
     const precoGasolina = parseFloat(gasolina);
 
-    // Validação simples para não dividir por zero ou campos vazios
     if (!precoEtanol || !precoGasolina) {
       return;
     }
@@ -23,7 +20,6 @@ export default function App() {
     var porcentagem = ((precoEtanol / precoGasolina) * 100).toFixed(1);
     let recomendacao;
     
-    // Correção da regra: Menos que 70% vale Etanol
     if (porcentagem < 70) {
       recomendacao = "Etanol";
     } else {
@@ -65,13 +61,11 @@ export default function App() {
         placeholder="Ex: 5.79"
       />
       
-      {/* Correção: onPress com "o" minúsculo */}
       <AppButton
         title="VERIFICAR VANTAGEM"
         onPress={VERIFICAR}
       />
       
-      {/* Só renderiza o card se houver um resultado */}
       {resultado && (
         <ResultCard 
           recomendacao={resultado.recomendacao}
@@ -88,7 +82,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 80, // Espaço para o cabeçalho não cobrir o conteúdo
+    paddingTop: 80,
   },
   titleTop: {
     fontSize: 24,
