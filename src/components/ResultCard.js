@@ -4,9 +4,7 @@ import { View, Text, StyleSheet } from 'react-native';
 export default function ResultCard(props) {
   return (
     <View style={styles.card}>
-      {/* Corrigido para props.recomendacao */}
       <Text style={styles.title}>Abasteça com: {props.recomendacao}</Text>
-      {/* Corrigido para props.porcentagem */}
       <Text style={styles.description}>
         O etanol está custando {props.porcentagem}% da gasolina.
       </Text>
